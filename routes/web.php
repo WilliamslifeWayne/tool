@@ -12,6 +12,17 @@
 */
 // 根目录
 Route::get('/', 'Admin\LoginController@index');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::group(['prefix' => 'admin'], function(){
+    //登录
+    Route::get('/login', 'Admin\LoginController@login');
+    Route::post('/login', 'Admin\LoginController@dologin');
+    Route::get('/logout', 'Admin\LoginController@logout');
+    //获取验证码
+	Route::get("/login/getCheckCode", "Admin\LoginController@getCheckCode");
+    Route::group(['middleware' => 'login'], function(){
+        //首页
+        Route::get('/index', 'Admin\IndexController@index');
+        
+    });
+});

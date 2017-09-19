@@ -33,20 +33,27 @@
             <div class="row cl">
                 <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe62c;</i></label>
                 <div class="formControls col-xs-8">
-                    <input id="" name="username" type="text" placeholder="请输入账号" class="input-text size-L">
+                    <input id="" name="username" type="text" placeholder="请输入账号" class="input-text radius size-L">
                 </div>
             </div>
             <div class="row cl">
-                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe63f;</i></label>
+                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe605;</i></label>
                 <div class="formControls col-xs-8">
-                    <input id="" name="password" type="password" placeholder="请输入密码" class="input-text size-L">
+                    <input id="" name="password" type="password" placeholder="请输入密码" class="input-text radius size-L">
                 </div>
             </div>
-            {{--<div class="row cl">--}}
-                {{--<div class="formControls col-xs-8 col-xs-offset-3">--}}
-                    {{--<input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">--}}
-                    {{--<img src=""> <a id="kanbuq" href="javascript:;">看不清，换一张</a> </div>--}}
-            {{--</div>--}}
+            <div class="row cl">
+                
+            	<label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe63f;</i></label>
+            	<div class="formControls col-xs-8">
+                	<input class="input-text radius size-L" type="text" placeholder="验证码" value="" style="width:150px;">
+                	<img src="{{URL('/admin/login/getCheckCode')}}" id="checkcodeimg"> <a id="kanbuq" href="javascript:;" onClick="againCode()">看不清，换一张</a>
+                </div>
+                    <!-- <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe605;</i></label>
+	                <div class="formControls col-xs-8">
+	                    <input id="" name="code" type="code" placeholder="请输入验证码" class="input-text radius size-L">
+	                </div> -->
+            </div>
             <div class="row cl">
                 <div class="formControls col-xs-8 col-xs-offset-3">
                     <label for="online" style="color:red;">
@@ -68,5 +75,21 @@
 <div class="footer">Copyright &copy; 1993-2017 Powered by Williams Technology</div>
 <script type="text/javascript" src="/admin/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/admin/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript">
+	function againCode(){
+		$.ajax({
+			url: '/admin/login/getCheckCode',
+			type: 'GET',
+			success: function(data){
+                if(data){
+                	var urls =$('#checkcodeimg').attr('src');
+                    $("#checkcodeimg").attr('src', urls);
+                }else{
+                    alert("获取验证码失败！");
+                }
+            }
+		})
+	}
+</script>
 </body>
 </html>

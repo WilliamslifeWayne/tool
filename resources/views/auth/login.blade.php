@@ -24,7 +24,6 @@
 </head>
 <body>
 <input type="hidden" id="TenantId" name="TenantId" value="" />
-<!-- <div class="header"></div> -->
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
     	<div style="color: white;text-align:center"><h4>Tool 后台登录系统</h4></div>
@@ -33,26 +32,22 @@
             <div class="row cl">
                 <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe62c;</i></label>
                 <div class="formControls col-xs-8">
-                    <input id="" name="username" type="text" placeholder="请输入账号" class="input-text radius size-L">
+                    <input name="username" type="text" placeholder="请输入账号" class="input-text radius size-L">
                 </div>
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe605;</i></label>
                 <div class="formControls col-xs-8">
-                    <input id="" name="password" type="password" placeholder="请输入密码" class="input-text radius size-L">
+                    <input name="password" type="password" placeholder="请输入密码" class="input-text radius size-L">
                 </div>
             </div>
             <div class="row cl">
                 
             	<label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe63f;</i></label>
             	<div class="formControls col-xs-8">
-                	<input class="input-text radius size-L" type="text" placeholder="验证码" value="" style="width:150px;">
+                	<input name="checkcode" class="input-text radius size-L" type="text" placeholder="验证码" value="" style="width:150px;">
                 	<img src="{{URL('/admin/login/getCheckCode')}}" id="checkcodeimg" class="radius"> <a id="kanbuq" href="javascript:;" onClick="againCode()">看不清，换一张</a>
                 </div>
-                    <!-- <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe605;</i></label>
-	                <div class="formControls col-xs-8">
-	                    <input id="" name="code" type="code" placeholder="请输入验证码" class="input-text radius size-L">
-	                </div> -->
             </div>
             <div class="row cl">
                 <div class="formControls col-xs-8 col-xs-offset-3">

@@ -16,7 +16,7 @@ Route::get('/', 'Admin\LoginController@index');
 Route::group(['prefix' => 'admin'], function(){
     //登录
     Route::get('/login', 'Admin\LoginController@login');
-    Route::post('/login', 'Admin\LoginController@dologin');
+    Route::post('/login', 'Admin\LoginController@logincheck');
     Route::get('/logout', 'Admin\LoginController@logout');
     //获取验证码
 	Route::get("/login/getCheckCode", "Admin\LoginController@getCheckCode");

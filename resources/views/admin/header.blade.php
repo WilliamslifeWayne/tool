@@ -22,7 +22,7 @@
     <script type="text/javascript" src="/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
-    <title>贷款超市后台运营系统</title>
+    <title>后台登录</title>
 </head>
 <body>
 

@@ -47,7 +47,7 @@
             	<label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe63f;</i></label>
             	<div class="formControls col-xs-8">
                 	<input class="input-text radius size-L" type="text" placeholder="验证码" value="" style="width:150px;">
-                	<img src="{{URL('/admin/login/getCheckCode')}}" id="checkcodeimg"> <a id="kanbuq" href="javascript:;" onClick="againCode()">看不清，换一张</a>
+                	<img src="{{URL('/admin/login/getCheckCode')}}" id="checkcodeimg" class="radius"> <a id="kanbuq" href="javascript:;" onClick="againCode()">看不清，换一张</a>
                 </div>
                     <!-- <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe605;</i></label>
 	                <div class="formControls col-xs-8">

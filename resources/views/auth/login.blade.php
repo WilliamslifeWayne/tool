@@ -24,18 +24,19 @@
 </head>
 <body>
 <input type="hidden" id="TenantId" name="TenantId" value="" />
+<!-- <div class="header"></div> -->
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
         <form class="form form-horizontal" action="/admin/login" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div class="row cl">
-                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe62c;</i></label>
                 <div class="formControls col-xs-8">
                     <input id="" name="username" type="text" placeholder="请输入账号" class="input-text size-L">
                 </div>
             </div>
             <div class="row cl">
-                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe63f;</i></label>
                 <div class="formControls col-xs-8">
                     <input id="" name="password" type="password" placeholder="请输入密码" class="input-text size-L">
                 </div>

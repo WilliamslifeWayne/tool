@@ -27,6 +27,7 @@
 <!-- <div class="header"></div> -->
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
+    	<div style="color: white;text-align:center"><h4>Tool 后台登录系统</h4></div>
         <form class="form form-horizontal" action="/admin/login" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div class="row cl">

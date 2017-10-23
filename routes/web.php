@@ -18,11 +18,11 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/login', 'Admin\LoginController@login');
     Route::post('/login', 'Admin\LoginController@logincheck');
     Route::get('/logout', 'Admin\LoginController@logout');
+    Route::get("/login/check_code/checkcode/{checkcode}", "Admin\LoginController@check_code");
     //获取验证码
 	Route::get("/login/getCheckCode", "Admin\LoginController@getCheckCode");
     Route::group(['middleware' => 'login'], function(){
         //首页
         Route::get('/index', 'Admin\IndexController@index');
-        
     });
 });

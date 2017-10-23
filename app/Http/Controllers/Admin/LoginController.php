@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Gregwar\Captcha\CaptchaBuilder;
+use Illuminate\Support\Facades\Hash;
 use Session;
 use App\user;
 class LoginController extends Controller
@@ -27,10 +28,21 @@ class LoginController extends Controller
 		return $builder->output();
 	}
 
+	//验证码输入检测
+	public function check_code($code)
+	{
+		$checkcode = Session::get("checkcode");
+		if ($code == $checkcode) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
 	//登录检测
 	public function logincheck(Request $request)
 	{
-		$this->validate($request,[
+		$this->validate($request, [
 			"username" => "required",
 			"password" => "required",
 			"checkcode" => "required",
@@ -39,5 +51,17 @@ class LoginController extends Controller
 		 	"password.required" => "密码不能为空",
 		 	"checkcode.required" => "验证码不能为空",
 		 ]);
+		$User   = new User;
+		$record = $User->where("username", $request->username)->first();
+		if ($res = Hash::check($request->password, $record->password)) {
+			//用户持久化操作
+			Session::flash("username",$record->username);
+			Session::flash("group",$record->group);
+			Session::flash("tel",$record->tel);
+			return view("/admin/index");
+		} else {
+			//用户名或者密码不正确
+			return redirect("/admin/login")->with("message", "用户名或者密码不正确");
+		}
 	}    
 }

@@ -23,6 +23,7 @@
     <meta name="description" content="">
 </head>
 <body>
+    {{Session::get("checkcode")}}
 <input type="hidden" id="TenantId" name="TenantId" value="" />
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
@@ -42,18 +43,23 @@
                 </div>
             </div>
             <div class="row cl">
-                
             	<label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe63f;</i></label>
             	<div class="formControls col-xs-8">
-                	<input name="checkcode" class="input-text radius size-L" type="text" placeholder="验证码" value="" style="width:150px;">
+                	<input name="checkcode" id="code" class="input-text radius size-L" type="text" placeholder="验证码" value="" onblur="check_code()" style="width:150px;">
                 	<img src="{{URL('/admin/login/getCheckCode')}}" id="checkcodeimg" class="radius"> <a id="kanbuq" href="javascript:;" onClick="againCode()">看不清，换一张</a>
                 </div>
             </div>
             <div class="row cl">
                 <div class="formControls col-xs-8 col-xs-offset-3">
                     <label for="online" style="color:red;">
-                        @if(session('info'))
-                            {{session('info')}}
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         @endif
                     </label>
                 </div>
@@ -85,6 +91,19 @@
             }
 		})
 	}
+    function check_code(){
+        var code = $("#code").val();
+        $.ajax({
+            url: '/admin/login/check_code/checkcode/' + code,
+            type: 'GET',
+            success:function(data){
+                if (data == 0) {
+                    alert("验证码输入有误");
+                    // window.location.reload();
+                }
+            }
+        });
+    }
 </script>
 </body>
 </html>
